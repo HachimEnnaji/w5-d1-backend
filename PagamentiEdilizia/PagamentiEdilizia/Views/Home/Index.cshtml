@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <div>
+<h1 class="display-1">Benvenuto in Pagamenti Edilizia</h1>
+        <p>Questa è la pagina principale del sito. Da qui puoi navigare verso le pagine di gestione dei pagamenti e dei dipendenti.</p>
+        <p>Per iniziare, seleziona una delle seguenti opzioni:</p>
+        <ul>
+            <li>
+
+            <button class="btn btn-outline-secondary mb-3">@Html.ActionLink("Pagamenti", "Index", "Pagamenti", null, new { @class = "no-decoration" })</button>
+            </li>
+            <li>
+
+            <button class="btn btn-outline-info">@Html.ActionLink("Dipendenti", "Index", "Dipendente", null, new { @class = "no-decoration" })</button>
+            </li>
+        </ul>
+
+    </div>
+</main>
