@@ -62,9 +62,8 @@
                     @Html.DisplayFor(modelItem => item.Mansione)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Cancella", "Delete", new { id = item.Nome })
+                    @Html.ActionLink("Modifica", "Modifica", new { id = item.Nome })
                 </td>
             </tr>
         }

@@ -185,6 +185,7 @@
     <Content Include="Views\Dipendente\Create.cshtml" />
     <Content Include="Views\Pagamenti\Index.cshtml" />
     <Content Include="Views\Pagamenti\Create.cshtml" />
+    <Content Include="Views\Dipendente\Modifica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
