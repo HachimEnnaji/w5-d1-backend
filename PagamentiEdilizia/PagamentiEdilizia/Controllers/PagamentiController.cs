@@ -10,7 +10,8 @@ namespace PagamentiEdilizia.Controllers
     public class PagamentiController : Controller
     {
         // GET: Pagamenti
-        public ActionResult Index()
+
+        public ActionResult Index(bool? id)
         {
             List<Pagamenti> pagamento = new List<Pagamenti>();
             string myConnection = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
@@ -19,9 +20,11 @@ namespace PagamentiEdilizia.Controllers
             try
             {
                 conn.Open();
-                string query = "SELECT * FROM PAGAMENTI";
+                string query = id.HasValue ? $"SELECT * FROM PAGAMENTI ORDER BY PERIODO ASC" : "SELECT * FROM PAGAMENTI";
+
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
+
                 while (reader.Read())
                 {
                     Pagamenti p = new Pagamenti();
@@ -78,5 +81,8 @@ namespace PagamentiEdilizia.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+
     }
 }
