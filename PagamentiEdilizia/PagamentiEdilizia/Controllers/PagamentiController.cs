@@ -11,8 +11,9 @@ namespace PagamentiEdilizia.Controllers
     {
         // GET: Pagamenti
 
-        public ActionResult Index(bool? id)
+        public ActionResult Index(int? id)
         {
+            string query;
             List<Pagamenti> pagamento = new List<Pagamenti>();
             string myConnection = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
             SqlConnection conn = new SqlConnection(myConnection);
@@ -20,7 +21,20 @@ namespace PagamentiEdilizia.Controllers
             try
             {
                 conn.Open();
-                string query = id.HasValue ? $"SELECT * FROM PAGAMENTI ORDER BY PERIODO ASC" : "SELECT * FROM PAGAMENTI";
+
+                switch (id)
+                {
+                    //scrivi una query diversa a seconda del valore di id
+                    case 1:
+                        query = "SELECT * FROM PAGAMENTI ORDER BY PERIODO ASC";
+                        break;
+                    case 2:
+                        query = "SELECT * FROM PAGAMENTI ORDER BY PERIODO DESC";
+                        break;
+                    default:
+                        query = "SELECT * FROM PAGAMENTI";
+                        break;
+                }
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();

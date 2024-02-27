@@ -7,63 +7,65 @@
 <h2>Pagamenti</h2>
 
 <button class="btn btn-outline-secondary mb-3 " style="text-decoration:none;">
-
     @Html.ActionLink("Create New", "Create", null, new { @class = "no-decoration" })
 </button>
-<button class="btn btn-outline-secondary mb-3">
-    @Html.ActionLink("Ordina per Data", "Index", new { id = true }, new { @class = "no-decoration" })
+<button class="btn btn-warning mb-3">
+    @Html.ActionLink("Ordina in ordine crescente", "Index", new { id = 1 }, new { @class = "no-decoration" })
+</button>
+<button class="btn btn-warning mb-3">
+    @Html.ActionLink("Ordina in ordine decrescente", "Index", new { id = 2 }, new { @class = "no-decoration" })
 </button>
 
-    <table class="table table-striped">
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDPagamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Acconto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stipendio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Periodo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Importo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDDipendente)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IDPagamento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Acconto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Stipendio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Periodo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Importo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IDDipendente)
-            </th>
-            <th></th>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDPagamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Acconto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stipendio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Periodo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Importo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDDipendente)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
         </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IDPagamento)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Acconto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Stipendio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Periodo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Importo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IDDipendente)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
-        }
-
-    </table>
+    }
+</table>
